@@ -4,6 +4,7 @@ curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poet
 ## initialize the project
 # cd my_project
 poetry init -n
+poetry config --local virtualenvs.in-project trueś
 
 ## instal dependencies 
 poetry add --dev pytest pytest-cov
