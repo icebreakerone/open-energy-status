@@ -2,7 +2,6 @@
 
 import re
 import requests
-import sys
 
 
 def test_http_response():
