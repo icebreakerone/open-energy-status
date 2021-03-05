@@ -47,7 +47,7 @@ jobs:
       # check test coverage and code quality
       #----------------------------------------------  
       - name: Code Quality
-        run: poetry run black . --check
+        run: poetry run black . --diff
       #----------------------------------------------
       # run unit tests
       #----------------------------------------------
