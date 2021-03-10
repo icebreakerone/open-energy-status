@@ -1,4 +1,4 @@
-name: CI
+name: test_ckan
 
 on: [push]
 
@@ -7,20 +7,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
       #----------------------------------------------
-      #  -----  checkout repo  -----      
+      #  -----  checkout repo  -----
       #----------------------------------------------
     steps:
       - name: Check out the repository
         uses: actions/checkout@v2
       #----------------------------------------------
-      #  -----  install Python  -----      
+      #  -----  install Python  -----
       #----------------------------------------------
       - name: Set up Python 3.7
         uses: actions/setup-python@v2
         with:
           python-version: 3.7
       #----------------------------------------------
-      #  -----  install & configure poetry  -----      
+      #  -----  install & configure poetry  -----
       #----------------------------------------------
       - name: Install Poetry
         uses: snok/install-poetry@v1.1.2
@@ -28,7 +28,7 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
       #----------------------------------------------
-      #       load cached venv if cache exists      
+      #       load cached venv if cache exists
       #----------------------------------------------
       - name: Load cached venv
         id: cached-poetry-dependencies
@@ -37,18 +37,18 @@ jobs:
           path: .venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       #----------------------------------------------
-      # install dependencies if cache does not exist 
+      # install dependencies if cache does not exist
       #----------------------------------------------
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root
       #----------------------------------------------
       # check test coverage and code quality
-      #----------------------------------------------  
+      #----------------------------------------------
       - name: Code Quality
         run: poetry run black . --check --diff
       #----------------------------------------------
       # run unit tests
       #----------------------------------------------
       - name: Test with pytest
-        run: poetry run pytest
+        run: poetry run pytest tests/ckan_test.py
