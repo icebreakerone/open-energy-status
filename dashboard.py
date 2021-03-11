@@ -5,11 +5,16 @@ import os
 
 ckan_result = os.system("poetry run pytest tests/ckan_test.py")
 raidiam_result = os.system("poetry run pytest tests/raidiam.py")
+example_result = os.system("poetry run pytest tests/example.py")
 
 result = {
-    "apis": ["CKAN", "Raidiam"],
+    "apis": ["CKAN", "Raidiam", "Example"],
     "timeSlot": ["Now"],
-    "timeSlot1": [str(int(not ckan_result)), str(int(not raidiam_result))],
+    "timeSlot1": [
+        str(int(not ckan_result)),
+        str(int(not raidiam_result)),
+        str(int(not example_result)),
+    ],
 }
 
 # TODO: Fetch previous results
