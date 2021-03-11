@@ -3,3 +3,4 @@
 
 # open-energy-status
 
+See the live [API status dashboard](https://status.energydata.org.uk).
