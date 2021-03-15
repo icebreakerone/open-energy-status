@@ -1,6 +1,6 @@
 #!/bin/sh
 
-## instal poetry
+## install poetry
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 ## initialize the project
@@ -14,7 +14,7 @@ poetry env info --path # defines {path_to_venv}
 source {path_to_venv}/bin/activate
 
 
-## instal dependencies 
+## install dependencies
 poetry add --dev pytest pytest-cov
 poetry add --dev black --allow-prereleases
 poetry add --dev requests

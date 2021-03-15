@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    name: publish dahsboard
+    name: publish dashboard
     runs-on: ubuntu-18.04 
     container: 
      image: icebreakerone/statusenv:latest
